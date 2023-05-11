@@ -1,5 +1,5 @@
 {
-    "id": "io.supernova.react",
+    "id": "coconnorco.supernova.react",
     "name": "React",
     "description": "React token and style exporter",
     "source_dir": "src",
