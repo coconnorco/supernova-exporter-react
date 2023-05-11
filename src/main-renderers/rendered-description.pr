@@ -21,10 +21,10 @@ Rendered as:
 /* description */
 *}
 {[ if (context.description && context.description.count() > 0) ]}
-/** {{ context.description.replacing("*/", "* /") }} */
+/** test {{ context.description.replacing("*/", "* /") }} */
 {[/]}
 
 
 {[ if (context.isInternal && context.isInternal.count() > 0) ]}
-/** {{ context.isInternal.replacing("*/", "* /") }} */
+/** this is an private token */
 {[/]}
