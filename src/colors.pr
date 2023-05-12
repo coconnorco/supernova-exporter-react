@@ -10,13 +10,14 @@ and their value rendered using `rendered-color` blueprint
 {[ let brand = ds.currentBrand() /]}
 {[ const behavior = getBehavior(CURRENT_TYPE) /]}
 {[ const tokens = ds.tokensByType(CURRENT_TYPE, brand.id) /]}
+{[ const publicTokens = getPublicTokens(tokens) /]}
 
 {[ for token in tokens ]}
 {[ inject "rendered-token-var" context token /]}    
 {[/]}
 
 export const {{ behavior.varName }} = {
-{[ for token in tokens ]}
+{[ for token in publicTokens ]}
   {[ inject "rendered-description" context token /]}
 {[ inject "rendered-name" context token /]},
 

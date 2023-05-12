@@ -21,10 +21,5 @@ Rendered as:
 /* description */
 *}
 {[ if (context.description && context.description.count() > 0) ]}
-/** test {{ context.description.replacing("*/", "* /") }} */
-{[/]}
-
-
-{[ if (context.isInternal && context.isInternal.count() > 0) ]}
-/** this is an private token */
+/** {{ context.description.replacing("*/", "* /") }} */
 {[/]}
