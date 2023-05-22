@@ -10,4 +10,4 @@ export const Theme = {
     {[ const behavior = getBehavior(type) /]}
     {{ behavior.themeProperty }}: {{ behavior.varName }},
     {[/]}
-};
+}  as const;;

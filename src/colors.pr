@@ -22,4 +22,4 @@ export const {{ behavior.varName }} = {
 {[ inject "rendered-name" context token /]},
 
 {[/]}
-}
+} as const;
