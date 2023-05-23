@@ -42,52 +42,61 @@ Pulsar.registerFunction(
 const BEHAVIOR = {
   color: {
     fileName: "colors", // this should be somehow synced with output.json contents
-    varName: "Colors",
+    varName: "colors",
     themeProperty: "colors",
     tokenPrefix: "",
+    isInternal: false,
   },
   border: {
     fileName: "borders", // this should be somehow synced with output.json contents
-    varName: "Borders",
+    varName: "borders",
     themeProperty: "borders",
     tokenPrefix: "",
+    isInternal: false,
   },
   gradient: {
     fileName: "gradients", // this should be somehow synced with output.json contents
-    varName: "Gradients",
+    varName: "gradients",
     themeProperty: "gradients",
     tokenPrefix: "",
+    isInternal: false,
   },
   measure: {
     fileName: "measures", // this should be somehow synced with output.json contents
-    varName: "Measures",
+    varName: "measures",
     themeProperty: "measures",
     tokenPrefix: "",
+    isInternal: false,
   },
 
   shadow: {
     fileName: "shadows", // this should be somehow synced with output.json contents
-    varName: "Shadows",
+    varName: "shadows",
     themeProperty: "shadows",
     tokenPrefix: "",
+    isInternal: false,
   },
   typography: {
     fileName: "typography", // this should be somehow synced with output.json contents
-    varName: "Typographies",
-    themeProperty: "typographies",
+    varName: "typography",
+    themeProperty: "typography",
     tokenPrefix: "",
+    isInternal: true,
   },
   radius: {
     fileName: "radii", // this should be somehow synced with output.json contents
-    varName: "Raddii",
+    varName: "raddii",
     themeProperty: "radii",
     tokenPrefix: "",
+    isInternal: false,
   },
   unknown: {
     fileName: "uknown",
-    varName: "Unknowns",
+    varName: "unknowns",
     themeProperty: "unknowns",
     tokenPrefix: "",
+    isInternal: false,
+    unknown: true
   }
 };
 
@@ -109,6 +118,14 @@ function censor(censor) {
 
 Pulsar.registerFunction("getPublicTokens", function (tokens) {
   return tokens.filter(t => t.propertyValues.isInternal !== true);
+});
+
+Pulsar.registerFunction("getPublicBehaviors", function () {
+  return Object.entries(BEHAVIOR).filter(([_, v]) => !v.isInternal && !v.unknown).map(([k]) => k);
+});
+
+Pulsar.registerFunction("getInternalBehaviors", function () {
+  return Object.entries(BEHAVIOR).filter(([_, v]) => v.isInternal  && !v.unknown).map(([k]) => k);
 });
 
 Pulsar.registerFunction("toJSON", function (obj) {

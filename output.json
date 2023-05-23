@@ -29,8 +29,8 @@
             "write_to": "typography.ts"
         },
         {
-            "invoke": "theme.pr",
-            "write_to": "theme.ts"
+            "invoke": "index.pr",
+            "write_to": "index.ts"
         }
     ]
 }

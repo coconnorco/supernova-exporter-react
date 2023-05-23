@@ -1,0 +1,22 @@
+{[ const types = ["color","border","gradient","measure","shadow","radius","typography"] /]}
+
+{[ for type in types ]}
+{[ const behavior = getBehavior(type) /]}
+import { {{ behavior.varName }} } from './{{ behavior.fileName }}';
+{[/]}
+
+{[ const internalBehaviors = getInternalBehaviors() /]}
+{[ const publicBehaviors = getPublicBehaviors() /]}
+
+export const tokens = {
+    __internal__: {
+        {[ for type in internalBehaviors ]}
+        {[ const behavior = getBehavior(type) /]}
+        {{ behavior.themeProperty }}: {{ behavior.varName }},
+        {[/]}
+    },
+    {[ for type in publicBehaviors ]}
+    {[ const behavior = getBehavior(type) /]}
+    {{ behavior.themeProperty }}: {{ behavior.varName }},
+    {[/]}
+}  as const;
